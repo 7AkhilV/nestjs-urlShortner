@@ -26,11 +26,35 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+The NestJS URL Shortener is a web application that allows authenticated users to shorten URLs securely. 
+It incorporates authentication features, password hashing, and token-based authentication for added security.
+
+## Features
+
+- **User Authentication:**
+  - Register a new user with a username, email, and password.
+  - Log in with email and password.
+
+- **URL Shortening:**
+  - Shorten a URL by providing the full URL.
+  - Retrieve the shortened URL based on the short code.
+  - Accessible only to authenticated users. 
+ 
+- **Frontend:**
+  - Static HTML served with EJS.
+  - Minimal yet functional user interface.
+
+- **Security Measures**
+  - Passwords are securely hashed using bcrypt.
+  - Token-based authentication is implemented using JWT
+
 ## Installation
 
 ```bash
 $ npm install
 ```
+## Env configuration
+Update the environment variables in the `.env` file.
 
 ## Running the app
 
@@ -41,22 +65,26 @@ $ npm run start
 # watch mode
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
+The application will be accessible at http://localhost:3000.
+```
+## API Endpoints
+- **Authentication:**
+  - POST `/auth/signup`: Register a new user (requires username, email, password).
+  - POST `/auth/login`: Log in (requires email and password).
+  -
+- **URL Shortening:**
+  -GET `/shortUrl` : Get all the shorten Urls
+  -POST `/shortUrls`: Shorten a URL (requires fullURL).
+  -GET `/shortUrls/:shortCode`: Retrieve a shortened URL.
+
+
+
 ```
 
-## Test
+## Demo Video
 
-```bash
-# unit tests
-$ npm run test
+A demonstration of the application is available in the [demo video]([https://www.youtube.com/watch?v=your-video-id](https://youtu.be/dOkjHcGiCDs)).
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
 
 ## Support
 
