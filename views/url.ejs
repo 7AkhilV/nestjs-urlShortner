@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Shortener</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body class="container mt-4">
+  <h1 class="mb-4">URL Shortener</h1>
+
+  <!-- Shorten the link -->
+  <form id="urlForm" action="/shortUrls" method="post" class="my-4 form-inline">
+    <label for="fullUrl" class="sr-only">Enter URL:</label>
+    <input type="text" id="fullUrl" name="fullUrl" class="form-control col mr-2" placeholder="Url" required>
+    <button class="btn btn-success" type="submit">Shorten</button>
+  </form>
+
+  <!-- Display Short URLs in a Table -->
+  <% if (shortUrls && shortUrls.length > 0) { %>
+    <h2 class="mt-4">Short URLs</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Full URL</th>
+          <th scope="col">Short URL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% shortUrls.forEach(url => { %>
+          <tr>
+            <td><a href="<%= url.full %>" target="_blank"><%= url.full %></a></td>
+            <td><a href="<%= url.short %>" target="_blank"><%= url.short %></a></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <p>No short URLs available.</p>
+  <% } %>
+  <a href="/logout" class="btn btn-danger">Logout</a>
+
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function () {
+      const urlForm = document.getElementById('urlForm');
+  
+      if (urlForm) {
+        urlForm.addEventListener('submit', async function (event) {
+          event.preventDefault();
+  
+          const fullUrl = document.getElementById('fullUrl').value;
+          console.log('Full URL:', fullUrl);
+  
+          const token = localStorage.getItem('token');
+          console.log('Token:', token);
+  
+          try {
+            const response = await fetch('/shortUrls', {
+              method: 'POST',
+              headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ fullUrl }),
+            });
+  
+            if (response.ok) {
+              window.location.reload();
+            } else {
+              throw new Error('Failed to shorten URL');
+            }
+          } catch (error) {
+            console.error('Fetch Error:', error);
+          }
+        });
+      }
+    });
+
+   
+
+     
+  </script>
+  
+</body>
+</html>

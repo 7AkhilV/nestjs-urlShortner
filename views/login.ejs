@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login</h1>
+      <form id="loginForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+        <!-- redirect -->
+        <input
+          type="hidden"
+          id="_redirect"
+          name="_redirect"
+          value="/shortUrl"
+        />
+        <button type="button" onclick="loginUser()">Login</button>
+        <div id="result"></div>
+      </form>
+      <p>Don't have an account? <a href="/signup">Signup</a></p>
+    </div>
+
+    <script>
+      async function loginUser() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const redirectUrl = document.getElementById('_redirect').value;
+
+        const formData = {
+          email,
+          password,
+        };
+
+        try {
+          const response = await fetch('/auth/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            const token = data.token;
+
+            localStorage.setItem('token', token);
+
+            window.location.href = redirectUrl;
+          } else {
+            console.error('Authentication failed');
+          }
+        } catch (error) {
+          console.error('Error during login:', error);
+        }
+      }
+    </script>
+  </body>
+</html>
