@@ -73,19 +73,16 @@ The application will be accessible at http://localhost:3000.
   - POST `/auth/login`: Log in (requires email and password).
   -
 - **URL Shortening:**
-  -GET `/shortUrl`: Get all the shorten Urls.
-  -POST `/shortUrls`: Shorten a URL (requires fullURL).
-  -GET `/shortUrls/:shortCode`: Retrieve a shortened URL.
+  - GET `/shortUrl`: Get all the shorten Urls.
+  - POST `/shortUrls`: Shorten a URL (requires fullURL).
+  - GET `/shortUrls/:shortCode`: Retrieve a shortened URL.
 
 ## Demo Video
 
-A demonstration of the application is available in the [demo video]([https://www.youtube.com/watch?v=your-video-id](https://youtu.be/dOkjHcGiCDs)).
+A demonstration of the application is available in the [demo video](https://youtu.be/dOkjHcGiCDs).
+
 
 ```
-
-
-
-
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
