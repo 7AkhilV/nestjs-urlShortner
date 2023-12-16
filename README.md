@@ -73,17 +73,17 @@ The application will be accessible at http://localhost:3000.
   - POST `/auth/login`: Log in (requires email and password).
   -
 - **URL Shortening:**
-  -GET `/shortUrl` : Get all the shorten Urls
+  -GET `/shortUrl`: Get all the shorten Urls.
   -POST `/shortUrls`: Shorten a URL (requires fullURL).
   -GET `/shortUrls/:shortCode`: Retrieve a shortened URL.
-
-
-
-```
 
 ## Demo Video
 
 A demonstration of the application is available in the [demo video]([https://www.youtube.com/watch?v=your-video-id](https://youtu.be/dOkjHcGiCDs)).
+
+```
+
+
 
 
 ## Support
