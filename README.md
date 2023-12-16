@@ -81,6 +81,9 @@ The application will be accessible at http://localhost:3000.
 
 A demonstration of the application is available in the [demo video](https://youtu.be/dOkjHcGiCDs).
 
+## Special Considerations
+
+I utilized AI tools, specifically ChatGPT, during the development of this application. ChatGPT assisted me with error solving throughout the backend and frontend codebase. It provided the basic structure of the GitHub README file and also the basic structure of HTML and CSS in the frontend. 
 
 ```
 ## Support
